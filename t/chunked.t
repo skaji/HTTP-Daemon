@@ -143,6 +143,8 @@ sub mywarn ($) {
 my $pid;
 if ($pid = fork) {
     sleep 4;
+    system "netstat -an >&2";
+    warn "use $addresses[$family]->{client}, $tport";
     for my $t (0 .. $#TESTS) {
         my $test = $TESTS[$t];
         my $raw  = $test->{raw};
@@ -155,7 +157,7 @@ if ($pid = fork) {
         my $sock = IO::Socket::IP->new(
             PeerAddr => $addresses[$family]->{client},
             PeerPort => $tport,
-        ) or die;
+        ) or die "sock: $!";
         if (0) {
             for my $pos (0 .. length($raw) - 1) {
                 print $sock substr($raw, $pos, 1);
