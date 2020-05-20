@@ -1,6 +1,8 @@
 before_install:
   - sudo apt-get update -qq
   - sudo apt-get --no-install-recommends install -y cpanminus libperl-dev perl net-tools
+  - perl -V
+  - cpanm -nq IO::Socket::IP Socket
 install:
   - "true"
 script:
