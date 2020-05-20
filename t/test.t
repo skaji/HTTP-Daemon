@@ -18,10 +18,10 @@ for my $host ('::', '::1', '0.0.0.0', '127.0.0.1') {
     );
     if ($client) {
         diag "$host OK";
+        close $client;
     } else {
         diag "$host NG, $!";
     }
-    close $client;
 }
 pass;
 
