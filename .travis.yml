@@ -4,7 +4,7 @@ before_install:
   - sudo apt-get update -qq
   - sudo apt-get --no-install-recommends install -y cpanminus libperl-dev perl git net-tools
 install:
-  - "true"
+  - cpanm --sudo -nq IO::Socket::IP Socket
 perl:
   - "5.26"
 script:

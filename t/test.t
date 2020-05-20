@@ -11,6 +11,8 @@ my $server = IO::Socket::IP->new(
     Proto => 'tcp',
 ) or die "server: $!";
 
+system "netstat -an >&2";
+
 for my $host ('::', '::1', '0.0.0.0', '127.0.0.1') {
     my $client = IO::Socket::IP->new(
         PeerHost => $host,
